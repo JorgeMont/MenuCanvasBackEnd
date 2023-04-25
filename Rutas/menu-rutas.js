@@ -5,21 +5,10 @@ const Menu = require('../Models/Menu');
 
 const MenuController = require('../menuController');
 
-router.get('/menu', MenuController.MenuControl);
-
-router.post('/', async (req, res) => {
-    console.log('Post Menu');
-    const { nombre, categorias } = req.body;
-    console.log(req.body);
-    
-    const menu = new Menu({ nombre, categorias });
-    await menu.save().then(data => {
-       console.log(data);
-    }
-    ).catch(err => {
-       console.log({ message: err });
-    });
-    console.log('Done');
- });
+router.get('/', MenuController.indexMenus);
+router.post('/', MenuController.createMenu);
+router.get('/:id', MenuController.readMenu);
+router.patch('/:id', MenuController.updateMenu);
+router.delete('/:id', MenuController.deleteMenu);
  
  module.exports = router;
