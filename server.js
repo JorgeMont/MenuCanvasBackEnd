@@ -12,13 +12,13 @@ app.set('port', process.env.PORT || 3030);
 conexion();
 
 app.use('/api/usuario',require('./Rutas/usuario-rutas'));
-app.use('/api/', require('./Rutas/usuario-rutas'));
+app.use('/api/platillo',require('./Rutas/platillo-rutas'));
+app.use('/api/menu', require('./Rutas/menu-rutas'));
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+
 
 
 app.listen(app.get('port'), () => {
     console.log(`Server is running on port ${app.get('port')}`); 
   });
+
