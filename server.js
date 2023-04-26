@@ -9,6 +9,7 @@ app.use(express.json());
 app.set('port', process.env.PORT || 3030);
 
 app.use('/api/usuario',require('./Rutas/usuario-rutas'));
+app.use('/api/platillo',require('./Rutas/platillo-rutas'));
 
 app.get('/', (req, res) => {
     res.send('Hello World');

@@ -1,6 +1,6 @@
 //base de datos moongose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/menuApp');
+mongoose.connect('mongodb+srv://menuapp:WlTjY63XCyd7JgJO@cluster0.upfbfmv.mongodb.net/?retryWrites=true&w=majority');
 
 //conexion a la base de datos
 const db = mongoose.connection;
