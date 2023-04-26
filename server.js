@@ -12,6 +12,7 @@ app.set('port', process.env.PORT || 3030);
 conexion();
 
 app.use('/api/usuario',require('./Rutas/usuario-rutas'));
+app.use('/api/platillo',require('./Rutas/platillo-rutas'));
 app.use('/api/menu', require('./Rutas/menu-rutas'));
 
 

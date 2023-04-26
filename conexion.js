@@ -2,7 +2,6 @@
 //base de datos moongose
 const mongoose = require('mongoose');
 
-
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOSTNAME}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 const conexion = async() => {
