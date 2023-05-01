@@ -1,0 +1,74 @@
+footer{
+    width: 100%;
+    height: 30vh;
+    background-color: lightgrey;
+
+    #footer-container{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        h6{
+            font-size:  1.5rem;
+        }
+        .footer-list{
+            text-decoration: none;
+            color: black;
+        }
+        .redes{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            .icons{
+                display: flex;
+                justify-content: space-between;
+                padding-left: 1rem;
+                i{
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    width: 50px;
+                    font-size: 40px;
+                    color: black;
+                }
+            }
+        }
+        #nosotros{
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            padding-top: 1.9rem;
+            
+            h6{
+                margin-left: -2rem;
+            }
+
+            ul {
+                list-style: none;
+            }
+        }
+        .servicios{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            ul {
+                list-style: none;
+            }
+        }
+        .otros{
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            ul {
+                list-style: none;
+                margin-left: -1.5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.form-container{
+    padding-left: 4rem;
+    header{
+        h2{
+            border-bottom: 1px solid black;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+        }
+    }
+    .foto-container{
+        input{
+            margin-bottom: 1.5rem;
+        }
+        i{
+            font-size: 75px;
+            margin-left: 1rem;
+            margin-top: -1rem;
+        }
+    }
+    .info-personal{
+        padding-top: 2rem;
+        border-top: 1px solid black;
+        h6{
+            margin-bottom: 1.5rem;
+        }
+        p{
+            margin-bottom: -.05rem;
+        }
+    }
+    .info-restaurante{
+        h2{
+            margin-top: 2.5rem;
+            border-bottom: 1px solid black;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+        }
+        h4{
+            margin-bottom: 2rem;
+        }
+    }
+}

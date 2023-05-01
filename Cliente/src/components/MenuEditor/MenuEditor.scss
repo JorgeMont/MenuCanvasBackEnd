@@ -1,0 +1,164 @@
+.editor-container{
+    width:75vw;
+    .editor-header{
+        margin: -1rem;
+        img{
+            width: 100%;
+            height: 150px;
+        }
+    }
+    .editor-main{
+        margin-left: -1rem;
+        margin-top: 1.5rem;
+        .form-categorias{
+            input {
+                border-radius: 5px;
+                height: 35px;
+                padding: 1rem;
+                margin-right: 1rem;
+                border: .5px solid grey;
+            }
+            button{
+                height: 50px;
+                width: 175px;
+                border-radius: 10px;
+                background-color: lightgray;
+                border: none;
+            }
+            ul{
+                display: flex;
+                list-style: none;
+                margin-left: -3rem;
+                padding-top: 1rem;
+                li{
+                    margin-left: 1rem;
+                    border: .5px solid grey;
+                    border-radius: 10px;
+                    padding: .25rem 1rem .25rem;
+                }
+            }
+            #btn-crear-menu{
+                height: 75px;
+                margin: 1.25rem;
+            }
+        }
+
+        .form-platillos{
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            input{
+                width: 150px;
+                margin-right: 2rem;
+                border-radius: 5px;
+                border: .5px solid grey;
+            }
+            select{
+                width: 150px;
+                border: .5px solid grey;
+                border-radius: 5px;
+            }
+        }
+        .descripcion-platillo{
+            textarea{
+                width: 300px;
+                border: .5px solid grey;
+                border-radius: 5px;
+                margin: 1rem 0 1rem;
+
+            }
+        }
+        .form-btns{
+            flex-direction: column;
+            #foto-platillo{
+                background-color: white;
+                width: 250px;
+                height: 50px;
+                border-radius: 10px;
+                margin-left: 1rem;
+                font-weight: bold;
+                font-size: 1.15rem;
+                i{
+                    font-size: 1.5rem;
+                }
+            }
+            #crear-platillo{
+                width: 125px;
+                border-radius: 25px;
+                color: white;
+                background-color: navy;
+                font-size: 14px;
+                margin-top: 5rem;
+            }
+        }
+        
+        .checkbox-input{
+            margin-top: 5rem;
+            margin-left: .5rem;
+            label{
+                padding-left: .5rem;
+            }
+        }
+
+
+    }
+    .preview-container{
+        h6{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+        .categoria-preview{
+            border: 1px solid black;
+            height: 50px;
+            align-items: center;
+            width: 80%;
+            justify-content: center;
+            margin-left: 10%;
+            margin-top: 1rem;
+            font-size: 25px;
+
+        }
+        .menu-preview{
+            width: 525px;
+            border: 1px solid black;
+            height: 1000px;
+            .card-container{
+                margin-left: 1.5rem;
+                width: 100%;
+                height: 50px;
+                .card{
+                    margin-top: 1rem;
+                    margin-left: 2.25rem;
+                    width: 400px;
+                    display: flex;
+                    flex-direction: row;
+                    img{
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .card-body{
+                        width: 100%;
+                        .platillo{
+                            justify-content: space-between;
+                            img{
+                                margin-right: -5rem;
+                            }
+                            .card-title{
+                                margin-top: .5rem;
+                                margin-left: 10%;
+                                font-weight: bold;
+                            }
+                            small{
+                                margin-top: .5rem;
+                            }
+                            p{
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
