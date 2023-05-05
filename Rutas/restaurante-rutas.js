@@ -1,23 +1,31 @@
 const express = require("express");
 const router = express.Router();
+const {ObjectID} = require("mongodb");
 
 const Restaurante = require("../Models/Restaurante");
 
-router.post("/Restaurante", async (req, res) => {
-  console.log("Restaurante Post");
-  //  console.log(req.nombre);
-  const { nombre, Maps, telefono, logo, fb, wa, ig } = req.body;
-  console.log(req.body);
 
-  const restaurante = new Restaurante({
-    nombre,
-    Maps,
-    telefono,
-    logo,
-    fb,
-    wa,
-    ig,
-  });
+router.get ('/', async (req, res)=>{
+  try {
+      const restaurantes = await Restaurante.find({}).populate('menus', {
+        nombre: 1,
+        categorias: 1
+      });
+
+      res.status(200).send(restaurantes)
+  }catch(error){
+      console.log(error)
+  }
+
+});
+
+
+
+router.post("/", async (req, res) => {
+
+  const { nombre, Maps, telefono, logo, fb, wa, ig } = req.body;
+
+  const restaurante = new Restaurante({nombre,Maps,telefono,logo,fb,wa,ig,});
   await restaurante
     .save()
     .then((data) => {
@@ -26,26 +34,25 @@ router.post("/Restaurante", async (req, res) => {
     .catch((err) => {
       console.log({ message: err });
     });
-  console.log("Done");
 });
 
-router.get("/Restaurante/:id", async (request, response) => {
+router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
-    const post = await Restaurante.findById(id);
+    const restaurante = await Restaurante.findById(id)
 
-    if (!Restaurante) {
+    if (!restaurante) {
       response.status(404).send({
         error: "No se encontro ningún registro en la base de datos",
       });
     }
-    response.status(200).send(post);
+    response.status(200).send(restaurante);
   } catch (error) {
     next(error);
   }
 });
 
-router.put("/Restaurante/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const bodyParams = { ...request.body };
@@ -64,7 +71,7 @@ router.put("/Restaurante/:id", async (request, response) => {
   }
 });
 
-router.delete("Restaurante/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const deleteRestaurante = await Restaurante.findByIdAndDelete(id);
 
@@ -77,3 +84,4 @@ router.delete("Restaurante/:id", async (req, res) => {
 });
 
 module.exports = router;
+

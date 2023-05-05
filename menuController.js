@@ -1,5 +1,6 @@
 const { response } = require('express');
 const Menu = require('./Models/Menu');
+const Restaurante = require('./Models/Restaurante');
 
 
 
@@ -18,15 +19,18 @@ const indexMenus = async (request, response) => {
 const createMenu = async (request, response) => {
 
     try {
-        const { nombre, categorias } = request.body;
-        console.log(request.body);
-            
-        const newMenu = new Menu({ nombre, categorias });
-        await newMenu.save()
-        response.status(201).send(newMenu);
+        const { nombre, categorias, restauranteId } = request.body;
+        console.log(restauranteId);
+        const restaurante = await Restaurante.findById(restauranteId);
+
+        const newMenu = new Menu({ nombre, categorias, restaurante: restaurante._id });
+        const savedMenu = await newMenu.save();
+        restaurante.menus = restaurante.menus.concat(savedMenu._id);
+        await restaurante.save();
+        response.status(201).send(savedMenu);
 
     }catch (error) {
-        console.log({ message: err });
+        console.log({ message: error });
     }
 }
 

@@ -8,6 +8,6 @@ const schema = new Schema({
     foto: {type: String, required: true}
 });
 
-const model = mongoose.model("platillos", schema);
+const model = mongoose.model("Platillos", schema);
 module.exports = model;
 

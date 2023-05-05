@@ -14,6 +14,7 @@ conexion();
 app.use('/api/usuario',require('./Rutas/usuario-rutas'));
 app.use('/api/platillo',require('./Rutas/platillo-rutas'));
 app.use('/api/menu', require('./Rutas/menu-rutas'));
+app.use('/api/restaurante', require('./Rutas/restaurante-rutas'));
 
 
 
