@@ -20,7 +20,6 @@ const createMenu = async (request, response) => {
 
     try {
         const { nombre, categorias, restauranteId } = request.body;
-        console.log(restauranteId);
         const restaurante = await Restaurante.findById(restauranteId);
 
         const newMenu = new Menu({ nombre, categorias, restaurante: restaurante._id });

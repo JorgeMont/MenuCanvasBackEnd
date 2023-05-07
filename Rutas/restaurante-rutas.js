@@ -3,13 +3,14 @@ const router = express.Router();
 const {ObjectID} = require("mongodb");
 
 const Restaurante = require("../Models/Restaurante");
-
+const Usuario = require("../Models/Usuario");
 
 router.get ('/', async (req, res)=>{
   try {
       const restaurantes = await Restaurante.find({}).populate('menus', {
         nombre: 1,
-        categorias: 1
+        categorias: 1,
+        user: 1
       });
 
       res.status(200).send(restaurantes)
@@ -23,17 +24,19 @@ router.get ('/', async (req, res)=>{
 
 router.post("/", async (req, res) => {
 
-  const { nombre, Maps, telefono, logo, fb, wa, ig } = req.body;
+  try{
+    const { nombre, Maps, telefono, logo, fb, wa, ig, userId } = req.body;
+    const user = await Usuario.findById(userId);
 
-  const restaurante = new Restaurante({nombre,Maps,telefono,logo,fb,wa,ig,});
-  await restaurante
-    .save()
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log({ message: err });
-    });
+    const newRestaurante = new Restaurante({nombre,Maps,telefono,logo,fb,wa,ig, user: user._id});
+    const savedRestaurante = await newRestaurante.save()
+
+    user.restaurantes = user.restaurantes.concat(savedRestaurante._id);
+    await user.save();
+    res.status(201).send(savedRestaurante);
+  }catch (error) {
+      console.log({ message: error });
+    }
 });
 
 router.get("/:id", async (request, response) => {

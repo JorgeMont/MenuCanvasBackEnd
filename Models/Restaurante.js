@@ -9,7 +9,8 @@ const schemaRestaurante = new eschema({
   fb: { type: "String", required: true },
   wa: { type: "String", required: false },
   ig: { type: "String", required: false },
-  menus: [{type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}]
+  menus: [{type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}],
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}
 });
 
 module.exports = mongoose.model("Restaurante", schemaRestaurante);
