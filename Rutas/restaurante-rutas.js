@@ -42,7 +42,11 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
-    const restaurante = await Restaurante.findById(id)
+    const restaurante = await Restaurante.findById(id).populate('menus', {
+      nombre: 1,
+      categorias: 1,
+      user: 1
+    });
 
     if (!restaurante) {
       response.status(404).send({

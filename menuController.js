@@ -7,7 +7,12 @@ const Restaurante = require('./Models/Restaurante');
 
 const indexMenus = async (request, response) => {
     try {
-        const menus = await Menu.find({});
+        const menus = await Menu.find({}).populate('platillos', {
+            nombre: 1,
+            precio: 1,
+            descripcion: 1,
+            foto: 1
+        });
 
         response.status(200).send(menus)
     } catch (error) {
@@ -37,7 +42,12 @@ const createMenu = async (request, response) => {
 const readMenu = async (request, response) => {
     try {
         const {id} = request.params;
-        const menu = await Menu.findById(id);
+        const menu = await Menu.findById(id).populate('platillos', {
+            nombre: 1,
+            precio: 1,
+            descripcion: 1,
+            foto: 1
+        });
 
         if(!menu){
             response.status(404).send({
