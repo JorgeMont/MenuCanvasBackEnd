@@ -1,51 +1,65 @@
 const express = require("express");
 const router = express.Router();
+const {ObjectID} = require("mongodb");
 
 const Restaurante = require("../Models/Restaurante");
+const Usuario = require("../Models/Usuario");
 
-router.post("/Restaurante", async (req, res) => {
-  console.log("Restaurante Post");
-  //  console.log(req.nombre);
-  const { nombre, Maps, telefono, logo, fb, wa, ig } = req.body;
-  console.log(req.body);
+router.get ('/', async (req, res)=>{
+  try {
+      const restaurantes = await Restaurante.find({}).populate('menus', {
+        nombre: 1,
+        categorias: 1,
+        user: 1
+      });
 
-  const restaurante = new Restaurante({
-    nombre,
-    Maps,
-    telefono,
-    logo,
-    fb,
-    wa,
-    ig,
-  });
-  await restaurante
-    .save()
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log({ message: err });
-    });
-  console.log("Done");
+      res.status(200).send(restaurantes)
+  }catch(error){
+      console.log(error)
+  }
+
 });
 
-router.get("/Restaurante/:id", async (request, response) => {
+
+
+router.post("/", async (req, res) => {
+
+  try{
+    const { nombre, Maps, telefono, logo, fb, wa, ig, userId } = req.body;
+    const user = await Usuario.findById(userId);
+
+    const newRestaurante = new Restaurante({nombre,Maps,telefono,logo,fb,wa,ig, user: user._id});
+    const savedRestaurante = await newRestaurante.save()
+
+    user.restaurantes = user.restaurantes.concat(savedRestaurante._id);
+    await user.save();
+    res.status(201).send(savedRestaurante);
+  }catch (error) {
+      console.log({ message: error });
+    }
+});
+
+router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
-    const post = await Restaurante.findById(id);
+    const restaurante = await Restaurante.findById(id).populate('menus', {
+      nombre: 1,
+      categorias: 1,
+      user: 1
+    });
 
-    if (!Restaurante) {
+    if (!restaurante) {
       response.status(404).send({
         error: "No se encontro ningún registro en la base de datos",
       });
     }
-    response.status(200).send(post);
+    response.status(200).send(restaurante);
   } catch (error) {
     next(error);
   }
 });
 
-router.put("/Restaurante/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const bodyParams = { ...request.body };
@@ -64,7 +78,7 @@ router.put("/Restaurante/:id", async (request, response) => {
   }
 });
 
-router.delete("Restaurante/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const deleteRestaurante = await Restaurante.findByIdAndDelete(id);
 
@@ -77,3 +91,4 @@ router.delete("Restaurante/:id", async (req, res) => {
 });
 
 module.exports = router;
+

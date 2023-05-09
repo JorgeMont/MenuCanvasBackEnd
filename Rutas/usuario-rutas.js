@@ -27,7 +27,10 @@ router.get ('/', async ( req, res) => {
    console.log('Se recibio get')
 
    
-   const usuario = await Usuario.find ({});
+   const usuario = await Usuario.find ({}).populate('restaurantes', {
+      nombre: 1,
+      menus: 1
+   });
 
       if (!usuario){
          res.status(404).send ({

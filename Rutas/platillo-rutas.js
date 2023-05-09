@@ -2,25 +2,34 @@ const express = require("express");
 const router = express.Router();
 const {ObjectID} = require("mongodb");
 
-const platilloSchema = require("../Models/Platillo");
+const Platillo = require("../Models/Platillo");
+const Menu = require("../Models/Menu");
 
 router.post ('/', async (req, res)=>{
-    const platillo = platilloSchema(req.body);
-    await platillo
-        .save()
-        .then((data)=>{
-            console.log(data);
-        }
-        ).catch(err =>{
-            console.log({message: err});
-        });
-        console.log("Done")
+
+    try{
+        const {nombre, precio, descripcion, foto, menuId} = req.body;
+        const menu = await Menu.findById(menuId);
+
+        const newPlatillo = new Platillo({nombre, precio, descripcion, foto, menu: menu._id});
+        const savedPlatillo = await newPlatillo.save()
+
+        menu.platillos = menu.platillos.concat(savedPlatillo._id);
+        await menu.save();
+        res.status(201).send(savedPlatillo);
+    }catch(error){
+        console.log({ message: error })
+    }
+    console.log("Done")
 });
 
 //get all dishes
 router.get ('/', async (req, res)=>{
     try {
-        const platillos = await platilloSchema.find({})
+        const platillos = await Platillo.find({}).populate('menu', {
+            nombre: 1,
+            categorias: 1
+          });
 
         res.status(200).send(platillos)
     }catch(error){
@@ -33,7 +42,10 @@ router.get ('/', async (req, res)=>{
 router.get ('/:id', async(req, res)=>{
     try{
         const {id} = req.params
-        const platillo = await platilloSchema.findById(id)
+        const platillo = await Platillo.findById(id).find({}).populate('menu', {
+            nombre: 1,
+            categorias: 1
+          });
 
         if (!platillo){
             response.status(404).send({
@@ -52,7 +64,7 @@ router.patch('/:id', async (req, res)=>{
         const {id} = req.params
         const bodyParams = {...req.body}
 
-        const updatedDish = await platilloSchema.findByIdAndUpdate(id, bodyParams, {new: true})
+        const updatedDish = await Platillo.findByIdAndUpdate(id, bodyParams, {new: true})
 
         res.status(201).send(updatedDish)
     }catch(error){
@@ -63,7 +75,7 @@ router.patch('/:id', async (req, res)=>{
 router.delete('/:id', async (req,res)=>{
     try{
         const {id} = req.params
-        const deletedDish = await platilloSchema.findByIdAndDelete(id)
+        const deletedDish = await Platillo.findByIdAndDelete(id)
 
         if (!deletedDish){
             res.status(404).send({

@@ -5,9 +5,9 @@ const schema = new Schema({
     nombre: {type: String, required: true},
     precio: {type: Number, required: true},
     descripcion: {type: String, required: true},
-    foto: {type: String, required: true}
+    foto: {type: String, required: true},
+    menu: {type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}
 });
 
-const model = mongoose.model("platillos", schema);
-module.exports = model;
+module.exports = mongoose.model("Platillo", schema);
 
