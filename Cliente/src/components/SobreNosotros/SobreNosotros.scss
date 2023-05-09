@@ -1,0 +1,30 @@
+.sobreNosotros__banner{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.sobreNosotros__content{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 12rem;
+    align-items: center;
+}
+
+.sobreNosotros__content-image{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.sobreNosotros__content-image img{
+    width: 30%;
+}
+
+.sobreNosotros__content-texto{
+    width: 50%;
+}
+
+.sobreNosotros__content-texto p{
+    width: 70%;
+}
