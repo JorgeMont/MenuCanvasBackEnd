@@ -1,12 +1,13 @@
 const mongoose = require ('mongoose');
 const eschema = mongoose.Schema;
 
-const Platillo = require('./Platillo ');
+
 
 const schemaMenu = new eschema({
     nombre: {type: 'String', required: true},
     categorias: {type: 'Array', required: true},
-    platillos: {type: [Platillo], required: false}
+    restaurante: {type: mongoose.Schema.Types.ObjectId, ref: 'Restaurante'},
+    platillos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Platillo'}]
 });
 
 module.exports = mongoose.model('Menu', schemaMenu);
