@@ -4,11 +4,12 @@ import './App.scss';
 import CreateProfilePage from './Pages/CreateProfilePage';
 import MenuEditorPage from './Pages/MenuEditorPage';
 import SelectYourPlan from './Pages/SelectYourPlan';
+import LandingPage from './Pages/LandingPage/LandingPage';
 function App() {
   return (
   <>
     <Routes>
-    <Route path='/' element = {<p>home</p>} />
+    <Route path='/' element = {<LandingPage />} />
     <Route path='/planes' element = {<SelectYourPlan />} />
     <Route path='/login' element = {<p>login</p>} />
     <Route path='/signup' element = {<p>signup</p>} />
