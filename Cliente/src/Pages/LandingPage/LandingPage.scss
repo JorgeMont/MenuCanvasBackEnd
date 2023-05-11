@@ -1,11 +1,20 @@
 .portada{
-    background-color: #f1f1f1;
+    background-image: url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 5rem 2rem;
+    height: 20rem;
+
+    h1{
+        color: white;
+    }
 }
 
 .plans{
     background-color: #f1f1f1;
-    h3{
+
+    h2, h3{
         text-align: center;
         padding: 1rem;
     }
@@ -44,14 +53,15 @@
     justify-content: center;
     padding: 1rem 0;
 
-    button{
-        &:hover{
-            cursor: pointer;
-        }
-        
-        a{
-            text-decoration: none;
-            color: black;
-        }
+}
+
+button{
+    &:hover{
+        cursor: pointer;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
     }
 }

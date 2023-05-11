@@ -12,9 +12,13 @@ const LandingPage = () => {
       <Navbar />
       <section>
         <div className="portada">
-          <h2>Crea tu propio menú digital de forma sencilla</h2>
+          <h1>MenuCanvas</h1>
+          <button>
+            <Link to={'/planes'}>QUIERO CREAR MI MENÚ</Link>
+          </button>
         </div>
         <div className="plans">
+          <h2>Crea tu propio menú digital de forma sencilla</h2>
           <h3 className="plans__title">Planes a tu Medida</h3>
           <div className="plans__container">
             <div className="plans__free">
