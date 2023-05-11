@@ -15,9 +15,7 @@ function MenuEditorPage() {
             <MenuEditor/>
           </div>
         </div>
-        <footer className='container-fluid d-flex 3fr 3fr 3fr 3fr'>
-          <Footer/>
-        </footer>
+        <Footer />
         </>
       )
     }

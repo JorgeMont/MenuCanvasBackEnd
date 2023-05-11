@@ -5,6 +5,7 @@ import {MdEmail} from "react-icons/md";
 
 function Footer() {
   return (
+    <footer className="container-fluid d-flex 3fr 3fr 3fr 3fr">
     <div className="container-fluid row" id="footer-container">
       <div className="redes col-3">
         <h6>MenuCanvas</h6>
@@ -37,6 +38,7 @@ function Footer() {
         </ul>
       </div>
     </div>
+    </footer>
   )
 }
 

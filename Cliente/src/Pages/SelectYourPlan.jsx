@@ -10,9 +10,7 @@ function SelectYourPlan() {
       <Navbar />
       <ButtonGratis />
       <CardsPrice />
-      <footer className="container-fluid d-flex 3fr 3fr 3fr 3fr">
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }
