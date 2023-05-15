@@ -63,12 +63,6 @@ const LandingPage = () => {
       </section>
 
       <SobreNosotros />
-      <div className="">
-        <Platillo/>
-      </div>
-      <div className="d-flex justify-content-center mb-5">
-        <Categoria/>
-      </div>
 
       <footer className="container-fluid d-flex 3fr 3fr 3fr 3fr">
         <Footer />
