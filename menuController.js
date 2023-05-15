@@ -25,13 +25,20 @@ const createMenu = async (request, response) => {
 
     try {
         const { nombre, categorias, restauranteId } = request.body;
+
+        const existsMenu = await Menu.findOne({nombre});
+        if(existsMenu){
+            const error = new Error('Ya existe un menú registrado con ese nombre.');
+            res.status(400).json({msg: error.message});
+        }
+
         const restaurante = await Restaurante.findById(restauranteId);
 
         const newMenu = new Menu({ nombre, categorias, restaurante: restaurante._id });
         const savedMenu = await newMenu.save();
         restaurante.menus = restaurante.menus.concat(savedMenu._id);
         await restaurante.save();
-        response.status(201).send(savedMenu);
+        response.status(201).json({msg: 'Menú creado correctamente.'});
 
     }catch (error) {
         console.log({ message: error });

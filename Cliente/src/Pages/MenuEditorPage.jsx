@@ -9,10 +9,12 @@ function MenuEditorPage() {
         <nav>
           <Navbar/>  
         </nav>
-        <div className="container-fluid d-flex 3fr 6fr p-6">
+        <div className="container-fluid d-flex">
           <Sidebar className="bg-light"/>
           <div className="container menu-editor d-flex justify-content-between p-4">
+            
             <MenuEditor/>
+            <div className='container__prev'>Previsualizacion</div>
           </div>
         </div>
         <footer className='container-fluid d-flex 3fr 3fr 3fr 3fr'>

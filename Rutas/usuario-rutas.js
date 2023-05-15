@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const router = express.Router();
 //import Usuario from '../Models/Usuario';
@@ -7,12 +5,14 @@ const Usuario = require('../Models/Usuario');
 
 //Crear nuevo usuario
 router.post('/', async (req, res) => {
-   console.log('Se recibio post');
-   //  console.log(req.nombre);
-   const { nombre, apellido, correo, edad } = req.body;
-   console.log(req.body);
+   const { nombre, apellido, correo, password, edad } = req.body;
+   const existsUser = await Usuario.findOne({correo});
+   if(existsUser){
+      const error = new Error('Ya existe un usuario registrado con esa cuenta de correo.');
+      res.status(400).json({msg: error.message});
+   }
    
-   const usuario = new Usuario({ nombre, apellido, correo, edad });
+   const usuario = new Usuario({ nombre, apellido, correo, password, edad });
    await usuario.save().then(data => {
       console.log(data);
    }
