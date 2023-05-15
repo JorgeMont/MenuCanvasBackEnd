@@ -6,8 +6,6 @@ import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
 import { TbFreeRights } from "react-icons/tb";
 
-import Platillo from "../../components/Platillo/Platillo";
-import Categoria from "../../components/Categoria/Categoria";
 
 const LandingPage = () => {
   return (

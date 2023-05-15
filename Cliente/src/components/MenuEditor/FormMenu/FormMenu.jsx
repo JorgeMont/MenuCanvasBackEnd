@@ -33,8 +33,8 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
         }
 
         try {
-          const getId = await axios.get('http://localhost:3030/api/restaurante/645fecb432eb99628c2579ee');
-          const {data} = await axios.post('http://localhost:3030/api/menu', {nombre : nombreMenu, categorias, restauranteId: getId.data._id} )
+          const getId = await axios.get(`${process.env.BACKEND_URL}/api/restaurante/645fecb432eb99628c2579ee`);
+          const {data} = await axios.post( `${process.env.BACKEND_URL}/api/menu`, {nombre : nombreMenu, categorias, restauranteId: getId.data._id} )
 
           setAlerta({msg: data.msg, error: false});
 
