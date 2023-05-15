@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Alerta from '../../Alerta/Alerta';
 import ImageUpload from './UploadImage';
 
-const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage, alerta,setAlerta}) => {
+const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
 
     const [nombrePlatillo, setNombrePlatillo] = useState('');
     const [precio, setPrecio] = useState('');
     const [categoriaPlatillo, setCategoriaPlatillo] = useState('Selecciona Categoria');
     const [descripcionPlatillo, setDescripcionPlatillo] = useState('');
+    const [alerta, setAlerta] = useState({});
 
 
     

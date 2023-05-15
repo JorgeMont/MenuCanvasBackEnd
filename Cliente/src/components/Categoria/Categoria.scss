@@ -1,0 +1,15 @@
+.categoria__container{
+    width: 5rem;
+    height: 5rem;
+    background-color: #f3f3f3;
+    border: 1px solid #cbcbcb;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        margin: 0;
+    }
+}

@@ -4,17 +4,18 @@ import Alerta from "../../Alerta/Alerta";
 import { FaPlus } from "react-icons/fa";
 
 
-const FormMenu = ({categorias, setCategorias, menu, setMenu, alerta,setAlerta}) => {
+const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
 
     const [nombreMenu, setNombreMenu] = useState('');
     const [categoria, setCategoria] = useState('');
     // const [listaCategorias, setListaCategorias] =useState([]);
+    const [alerta, setAlerta] = useState({});
 
 
     const handleCategoria = (event) => {
         event.preventDefault();
           console.log('Creando Categoria...');
-          if(categoria === ''){
+          if(categoria.includes('')){
             setAlerta({msg: 'Debes añadir una categoría', error: true})
           }else{
     

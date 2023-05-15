@@ -4,6 +4,10 @@ import LandingPlan from "../../components/LandingPlan/LandingPlan";
 import SobreNosotros from "../../components/SobreNosotros/SobreNosotros";
 import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
+import { TbFreeRights } from "react-icons/tb";
+
+import Platillo from "../../components/Platillo/Platillo";
+import Categoria from "../../components/Categoria/Categoria";
 
 const LandingPage = () => {
   return (
@@ -18,8 +22,8 @@ const LandingPage = () => {
           <div className="plans__container">
             <div className="plans__free">
               <h4>Plan Gratuito</h4>
-              <div className="plans__free-image">
-                <img src="free.png" alt="icon free plan" />
+              <div className="plans__free-image mt-4 mb-3">
+                <TbFreeRights />
               </div>
               <h5>Versión de Prueba</h5>
               <p>30 días</p>
@@ -54,11 +58,18 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="btn-landing">
-          <button>QUIERO SABER MáS</button>
+          <a className="btn btn-secondary mb-4" href="/planes">QUIERO SABER MáS</a>
         </div>
       </section>
 
       <SobreNosotros />
+      <div className="">
+        <Platillo/>
+      </div>
+      <div className="d-flex justify-content-center mb-5">
+        <Categoria/>
+      </div>
+
       <footer className="container-fluid d-flex 3fr 3fr 3fr 3fr">
         <Footer />
       </footer>
