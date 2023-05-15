@@ -5,10 +5,21 @@ const cors = require('cors');
 // const { mongoose } = require('./conexion');
 const conexion = require('./conexion');
 
-app.use(cors());
+const whiteList = ['http://localhost:3000'];
+const options = {
+  origin: function (origin, callback){
+    if(whiteList.includes(origin)){
+      callback(null, true);
+    }else{
+      callback(new Error("Error de Cors"));
+    }
+  }
+};
+
+app.use(cors(options));
 app.use(express.json());
 
-app.set('port', process.env.PORT || 3030);
+
 conexion();
 
 app.use('/api/usuario',require('./Rutas/usuario-rutas'));
@@ -18,7 +29,7 @@ app.use('/api/restaurante', require('./Rutas/restaurante-rutas'));
 
 
 
-
+app.set('port', process.env.PORT || 3030);
 app.listen(app.get('port'), () => {
     console.log(`Server is running on port ${app.get('port')}`); 
   });

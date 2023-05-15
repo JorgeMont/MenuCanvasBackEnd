@@ -1,0 +1,53 @@
+.createDish__group{
+    label{
+        display: block;
+        margin-top: 1rem;
+    }
+}
+
+.form__createDish{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .createDish__group{
+        width: 100%;
+
+        input,textarea {
+            width: 75% !important;
+        }
+    }
+}
+
+
+.createDish__group--uploader{
+    margin-top: 1rem;
+}
+
+.imageDelete {
+    margin-top: 2rem !important;
+    span{
+        font-weight: 500;
+    }
+}
+
+.input__uploaderImage{
+    background-color: #f4f4f4;
+    border: 1px solid #d7d7d7;
+}
+
+button{
+    background-color: #d7d7d7 !important;
+    border: solid 1px #9c9c9c !important;
+}
+
+.alert.alert-success.bg-\#48ffac.text-center.py-3.mt-2.bg-opacity-10 {
+    display: block;
+    width: 100%;
+}
+
+input.input__uploaderImage.btn {
+    margin-top: 1rem;
+    background-color: #d7d7d7;
+    padding: 1rem 2rem;
+}

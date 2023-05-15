@@ -8,19 +8,19 @@ const Menu = require("../Models/Menu");
 router.post ('/', async (req, res)=>{
 
     try{
-        const {nombre, precio, descripcion, foto, menuId} = req.body;
+        const {nombre, precio, descripcion, categoria, foto, menuId} = req.body;
         const menu = await Menu.findById(menuId);
 
-        const newPlatillo = new Platillo({nombre, precio, descripcion, foto, menu: menu._id});
+        const newPlatillo = new Platillo({nombre, precio, descripcion, categoria, foto, menu: menu._id});
         const savedPlatillo = await newPlatillo.save()
 
         menu.platillos = menu.platillos.concat(savedPlatillo._id);
         await menu.save();
-        res.status(201).send(savedPlatillo);
+        res.status(201).json({msg: 'Menú creado correctamente.'});
+
     }catch(error){
         console.log({ message: error })
     }
-    console.log("Done")
 });
 
 //get all dishes
