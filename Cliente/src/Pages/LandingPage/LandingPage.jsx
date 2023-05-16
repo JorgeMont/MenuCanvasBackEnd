@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import LandingPlan from "../../components/LandingPlan/LandingPlan";
 import SobreNosotros from "../../components/SobreNosotros/SobreNosotros";
@@ -58,9 +59,9 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="btn-landing">
-          <a className="btn btn-secondary mb-4" href="/planes">
-            QUIERO SABER MáS
-          </a>
+          <button>
+            <Link to={'/planes'}>QUIERO CREAR MI MENÚ</Link>
+          </button>
         </div>
       </section>
 

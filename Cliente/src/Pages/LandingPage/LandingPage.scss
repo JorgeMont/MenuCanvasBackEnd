@@ -49,3 +49,14 @@
     width: 100px;
     height: 100px;
 }
+
+button{
+    &:hover{
+        cursor: pointer;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}

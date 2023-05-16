@@ -25,6 +25,8 @@ function App() {
     <Route path='/dashboard' element = {<Dashboard/>} />
     <Route path='/edit/:idplatillo' element = {<EditDish/>} />
     <Route path='/my_qr' element = {<p>my_qr</p>} />
+    <Route path='/nosotros' element = {<p>Nosotros</p>} />
+    <Route path='/contacto' element = {<p>Contacto</p>} />
     <Route path='/create-menu' element = {<MenuEditorPage />} />
     <Route path='/suscription' element = {<Sucription/>} />
     <Route path='/profile' element = {<CreateProfilePage />} />
