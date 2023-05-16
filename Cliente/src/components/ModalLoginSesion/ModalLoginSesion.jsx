@@ -102,7 +102,7 @@ const ModalLoginSesion = () =>{
                         {errors.password && <p id='MensajeError'> {errors.password} </p>}
                         
                         <div className="loginSesionBtn">
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" href='/payment' id='SesionBtn'>
                                 Iniciar Sesión
                             </Button>
 
@@ -146,9 +146,9 @@ const ModalLoginSesion = () =>{
               </Card.Body>
         
               <Card.Body >
-                  <Card.Link href="#">Conoce nuetros planes</Card.Link>   
-              </Card.Body>
-          </Card>
+                  <Card.Link href="/planes">Conoce nuetros planes</Card.Link>   
+                    </Card.Body>
+                </Card>
                 </div>
 
             </div>
