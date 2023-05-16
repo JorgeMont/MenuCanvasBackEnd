@@ -6,13 +6,13 @@ const SobreNosotros = () => {
 
         <section>
             <div className='sobreNosotros__banner'>
-                <img src="imgBanner.png" alt='img Banner'></img>
+                <img src="https://picsum.photos/200" alt='img Banner'></img>
             </div>
 
             <div className="sobreNosotros__content">
                 <div className="sobreNosotros__content-image">
 
-                    <img src="imgFrame.png" alt="img Sobre nosotros" />
+                    <img src="https://picsum.photos/200" alt="img Sobre nosotros" />
                 </div>
 
                 <div className="sobreNosotros__content-texto">

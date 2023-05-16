@@ -17,7 +17,7 @@ function EligePlan() {
               </Card.Body>
         
               <Card.Body >
-                  <Card.Link href="#">$ 99 MXN</Card.Link>   
+                  <Card.Link href="/signup">$ 99 MXN</Card.Link>   
               </Card.Body>
           </Card>
   
@@ -29,7 +29,7 @@ function EligePlan() {
               </Card.Body>
         
               <Card.Body >
-                  <Card.Link href="#">$ 199 MXN</Card.Link>
+                  <Card.Link href="/signup">$ 199 MXN</Card.Link>
           
               </Card.Body>
           </Card>
@@ -41,7 +41,7 @@ function EligePlan() {
               </Card.Body>
         
               <Card.Body >
-                  <Card.Link href="#">$ 299 MXN</Card.Link>   
+                  <Card.Link href="/signup">$ 299 MXN</Card.Link>   
               </Card.Body>
           </Card>
   
@@ -52,7 +52,7 @@ function EligePlan() {
               </Card.Body>
         
               <Card.Body >
-                  <Card.Link href="#">$ 399 MXN</Card.Link>   
+                  <Card.Link href="/signup">$ 399 MXN</Card.Link>   
               </Card.Body>
           </Card>
           

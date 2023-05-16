@@ -1,0 +1,136 @@
+#modalPageExample{
+    display: flex;
+    align-items: center;
+    //height: 100vh;
+}
+
+.userRegistracion__form{
+    border: 1px solid #d4d4d4;
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+}
+
+/*
+#complete-modal{
+    border-radius: none;
+    width: 350px;
+    border: 2px solid black;*/
+    #modal-title{
+        margin-left: 3.5rem;
+    }
+    #modal-input{
+        border-radius: 0;
+        width: 350px;
+        margin-left: 3.5rem;
+        margin-bottom: -1.5rem;
+        
+        transition: .3s ease all;
+        //border: 3px solid transparent;
+        //height: 45px;
+        //line-height: 45px;
+        //padding: 0 40px 0 10px;
+        &:focus {
+            //outline: none;
+            //border: 3px;
+            box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+        }
+
+        
+ 
+        
+
+    }
+
+    div{
+        position: relative;
+        z-index: 90;
+    }
+
+    button{
+        width: 20rem;
+        height: 50px;
+        font-size: 25px;
+        margin-top: 2rem;
+        margin-left: 3rem;
+        
+    }
+
+    #correo{
+        border-radius: 0;
+    }
+    #contraseña{
+        border-radius: 0;
+    }
+    #confirmar-contraseña{
+        border-radius: 0;
+    }
+    #modal-footer{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 50px;
+        .modal-footer-images{
+            display: flex;
+            ul{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 125px;
+                list-style: none;
+                margin-left: -2rem;
+                li i{
+                    font-size: 35px;
+                }
+            }
+        }
+        
+    }
+//}
+
+
+$borde : #0075ff;
+$error : #f66060;
+$exito : #1ed12d;
+
+#LeyendaError{
+   font-size: 12px;
+   margin-bottom: 0;
+   color: $error;
+   margin-left: 5.5rem;
+   margin-top: 1.5rem; 
+   //display: none;
+}
+
+#IconoValidacion{
+    position: absolute;
+    right: 20px;
+    color: $exito;
+    
+    z-index: 100;
+    font-size: 16px;
+    //opacity: 0;
+    
+}
+
+#showPassword{
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    z-index: 100;
+    font-size: 20px;
+}
+
+
+#MensajeError{
+    //height: 45px;
+    //line-height: 45px;
+    margin: 40px 0 0 60px;
+    max-width: 250px;
+    
+    font-weight: bold;
+    color: $error;
+   
+    
+} 
+
+
