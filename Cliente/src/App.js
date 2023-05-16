@@ -6,8 +6,8 @@ import MenuEditorPage from './Pages/MenuEditorPage';
 import SelectYourPlan from './Pages/SelectYourPlan';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import Login from './Pages/Login/Login';
-import Register from './Pages/Register/Register';
+import ModalUserRegistrationPage from './Pages/Login/ModalUserRegistrationPage';
+import PageLoginSesion from './Pages/Register/PageLoginSesion'
 import Payment from './Pages/Payment/Payment';
 import Purchase from './Pages/Purchase/Purchase';
 import EditDish from './Pages/EditDish/EditDish';
@@ -18,8 +18,8 @@ function App() {
     <Routes>
     <Route path='/' element = {<LandingPage />} />
     <Route path='/planes' element = {<SelectYourPlan />} />
-    <Route path='/login' element = {<Login/>} />
-    <Route path='/signup' element = {<Register/>} />
+    <Route path='/login' element = {<ModalUserRegistrationPage/>} />
+    <Route path='/signup' element = {<PageLoginSesion/>} />
     <Route path='/payment' element = {<Payment/>} />
     <Route path='/purchase' element = {<Purchase/>} />
     <Route path='/dashboard' element = {<Dashboard/>} />
