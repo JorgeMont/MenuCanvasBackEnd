@@ -58,15 +58,14 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="btn-landing">
-          <a className="btn btn-secondary mb-4" href="/planes">QUIERO SABER MáS</a>
+          <a className="btn btn-secondary mb-4" href="/planes">
+            QUIERO SABER MáS
+          </a>
         </div>
       </section>
 
       <SobreNosotros />
-
-      <footer className="container-fluid d-flex 3fr 3fr 3fr 3fr">
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 };
