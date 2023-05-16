@@ -1,8 +1,12 @@
-const express = require("express");
+// const express = require("express");
+import express from "express";
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
+import cors from "cors";
 const { mongoose } = require("./conexion");
-import generateUploadURL from "../MenuCanvasBackEnd/s3";
+import mongoose from "mongoose";
+import generateUploadURL from "../MenuCanvasBackEnd/s3.js";
+
 app.use(cors());
 app.use(express.json());
 
