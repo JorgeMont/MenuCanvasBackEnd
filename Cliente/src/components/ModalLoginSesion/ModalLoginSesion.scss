@@ -1,0 +1,81 @@
+.loginSesion{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+.loginSesion__form{
+    border: 1px solid #d4d4d4;
+    padding: 2rem 4rem;
+
+    #modal-input{
+        width: 350px;
+    }
+}
+
+.loginSesion__form h1{
+    margin-bottom: 2rem;
+}
+
+.loginSesionBtn{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.sesionSocial{
+    width: 100%;
+    text-align: center;
+}
+
+.sesionSocial p{
+    margin: 0.5rem 0;
+}
+
+.sesionSocial__icons{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.sesionSocial__icons img{
+    width: 15%;
+}
+
+
+$exito : #1ed12d;
+$error : #f66060;
+
+div{
+    position: relative;
+    z-index: 90;
+}
+
+#LeyendaError{
+    font-size: 12px;
+    margin-bottom: 0;
+    color: $error;
+    margin-left: 5.5rem;
+    margin-top: 1.5rem; 
+    //display: none;
+ }
+
+#IconoValidacion{
+    position: absolute;
+    right: 10px;
+    color: $exito;
+    top: 10px;
+    z-index: 100;
+    font-size: 16px;
+    //opacity: 0;
+    
+}
+
+#showPassword{
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    z-index: 100;
+    font-size: 20px;
+}
