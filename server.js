@@ -5,18 +5,18 @@ const cors = require('cors');
 // const { mongoose } = require('./conexion');
 const conexion = require('./conexion');
 
-const whiteList = [process.env.FRONTEND_URL];
-const options = {
-  origin: function (origin, callback){
-    if(whiteList.includes(origin)){
-      callback(null, true);
-    }else{
-      callback(new Error("Error de Cors"));
-    }
-  }
-};
-
-app.use(cors(options));
+// const whiteList = [process.env.FRONTEND_URL];
+// const options = {
+//   origin: function (origin, callback){
+//     if(whiteList.includes(origin)){
+//       callback(null, true);
+//     }else{
+//       callback(new Error("Error de Cors"));
+//     }
+//   }
+// };
+//options
+app.use(cors());
 app.use(express.json());
 
 
