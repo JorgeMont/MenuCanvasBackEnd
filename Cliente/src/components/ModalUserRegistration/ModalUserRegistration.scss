@@ -32,7 +32,7 @@
         &:focus {
             //outline: none;
             //border: 3px;
-            box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+            //box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
         }
 
         
@@ -46,8 +46,8 @@
         z-index: 90;
     }
 
-    button{
-        width: 20rem;
+    #registrar-btn{
+        width: 23rem;
         height: 50px;
         font-size: 25px;
         margin-top: 2rem;

@@ -2,10 +2,12 @@ import './ModalUserRegistration.scss';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Card from 'react-bootstrap/Card';
 import {SiGmail} from "react-icons/si";
 import {GrFacebook} from "react-icons/gr";
 import {BsFillCheckCircleFill, BsFillExclamationTriangleFill, BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
 import { useForm, } from '../../hooks/useForm';
+import CanvasImg from '../../images/MENUCANVAS.jpg'
 
 
 const initialForm = {
@@ -76,6 +78,8 @@ function ModalUserRegistration() {
 
 
   return (<>
+
+  <div className='loginSesion'>
     <div className="userRegistracion__form">   
         <h1>Crea una cuenta</h1>   
             <Form onSubmit={handleSubmit}>
@@ -194,11 +198,13 @@ function ModalUserRegistration() {
                 {errors.password2 && <p id='MensajeError'> {errors.password2} </p>}
                 
 
-                <Button variant="primary" type='submit'  id="registrar-btn" >
+                <Button variant="primary" type='submit'  id="registrar-btn" href='/profile'>
                     Registrar
                     
                 </Button>
+                {/*      
                 {response && <p id="MensajeExito" > Registro enviado exitosamente!</p>}
+                */}
                 <div id="MensajeError">
                 {Object.keys(errors).length !== 0 &&
                 <p> 
@@ -218,10 +224,29 @@ function ModalUserRegistration() {
                     <li><a href="/"> <i><GrFacebook/></i> </a></li>
                 </ul>
             </div>
-            
+            <a href="/signup">Iniciar Sesion</a>
             </Modal.Footer>
      
     </div>
+
+    <div className="loginSesion__card">
+                <Card border="dark"  style={{textAlign:'center'}} className="p-0 m-5" width="200 rem" >
+                    <Card.Img variant="top" src={CanvasImg} width="100%" height="300rem"/>
+                    <Card.Body  >
+                        <Card.Title >MENU CANVAS</Card.Title> 
+                    </Card.Body>
+        
+                    <Card.Body >
+                        <Card.Link href="/planes">Conoce nuetros planes</Card.Link>   
+                    </Card.Body>
+                </Card>
+        </div>
+
+
+</div>
+
+    
+
     </>
   )
 }
