@@ -169,4 +169,28 @@ router.get('/olvide-password/:token', async (req, res) => {
    }
 });
 
+
+router.post('/olvide-password/:token', async (req, res) => {
+   const {token} = req.params;
+   const {password} = req.body;
+
+   const usuarioNuevoPassword = await Usuario.findOne({token});
+   if(usuarioNuevoPassword){
+      usuarioNuevoPassword.password = password;
+      usuarioNuevoPassword.token = "";
+
+      try {
+         await usuarioNuevoPassword.save();
+         res.json({msg: 'Password Modificado Correctamente.'});
+      } catch (error) {
+         console.log(error);
+      }
+   }else{
+      const error = new Error('El token no es válido.');
+      res.status(403).json({msg: error.message});
+   }
+   console.log(token);
+   console.log(password);
+});
+
 module.exports = router;
