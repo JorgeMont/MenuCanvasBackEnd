@@ -129,12 +129,44 @@ router.get('/confirmar/:token', async (req , res) => {
       confirmUser.confirmacion = true;
       confirmUser.token = '';
       await confirmUser.save();
-      res.json({ msg: 'Usuario confirmado Correctamente.'})
+      res.json({ msg: 'Usuario confirmado Exitosamente.'})
    } catch (error) {
       console.log(error);
    }
 
 
+});
+
+
+router.post('/olvide-password', async (req, res) => {
+   const {correo} = req.body;
+   const usuario = await Usuario.findOne({correo});
+   if(!usuario){
+      const error = new Error('El usuario no existe.');
+      res.status(400).json({msg: error.message});
+   }
+
+   try {
+      usuario.token = generarId();
+      await usuario.save();
+      res.json({ msg: 'Se ha enviado un correo con instrucciones a la cuenta de email registrada.' });
+      console.log(usuario);
+   } catch (error) {
+      console.log(error);
+   }
+});
+
+
+router.get('/olvide-password/:token', async (req, res) => {
+   const {token} = req.params;
+   const tokenValido = await Usuario.findOne({token});
+   if(tokenValido){
+      res.json({ msg: "Token válido y el usuario existe" });
+      console.log('Token válido');
+   }else{
+      const error = new Error('El token no es válido.');
+      res.status(403).json({msg: error.message});
+   }
 });
 
 module.exports = router;
