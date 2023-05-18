@@ -1,11 +1,9 @@
-// const express = require("express");
-import express from "express";
+require("dotenv").config();
+const express = require("express");
 const app = express();
-// const cors = require("cors");
-import cors from "cors";
-const { mongoose } = require("./conexion");
-import mongoose from "mongoose";
-import generateUploadURL from "../MenuCanvasBackEnd/s3.js";
+const cors = require("cors");
+const conexion = require("./conexion");
+const generateUploadURL = require("./s3");
 
 app.use(cors());
 app.use(express.json());

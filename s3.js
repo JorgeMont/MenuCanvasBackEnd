@@ -1,13 +1,9 @@
-import crypto from "crypto";
-import dotenv from "dotenv";
-import aws from "aws-sdk";
-import { promisify } from "util";
-// const dotenv = require("dotenv");
-// const aws = require("aws-sdk");
-// const crypto = require("crypto");
-// const { promisify } = require("util");
+const dotenv = require("dotenv");
+const aws = require("aws-sdk");
+const crypto = require("crypto");
+const { promisify } = require("util");
 const randomBytes = promisify(crypto.randomBytes);
-dotenv.config();
+require("dotenv").config();
 
 const region = "us-east-1";
 const bucketName = "menu-canvas-kodemia-bucket";
@@ -21,7 +17,7 @@ const s3 = new aws.S3({
   signatureVersion: "v4",
 });
 
-export default async function generateUploadURL() {
+async function generateUploadURL() {
   const rawBytes = await randomBytes(16);
   const imageName = rawBytes.toString("hex");
 
@@ -35,4 +31,4 @@ export default async function generateUploadURL() {
   return uploadURL;
 }
 
-// export { generateUploadURL };
+module.exports = { generateUploadURL };
