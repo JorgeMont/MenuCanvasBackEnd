@@ -175,6 +175,7 @@ router.post('/olvide-password/:token', async (req, res) => {
    const {password} = req.body;
 
    const usuarioNuevoPassword = await Usuario.findOne({token});
+   console.log(usuarioNuevoPassword);
    if(usuarioNuevoPassword){
       usuarioNuevoPassword.password = password;
       usuarioNuevoPassword.token = "";
