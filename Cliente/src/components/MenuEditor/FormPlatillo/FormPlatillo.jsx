@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Select from 'react-select'
 import Form from 'react-bootstrap/Form';
 import Alerta from '../../Alerta/Alerta';
 import ImageUpload from './UploadImage';
@@ -8,17 +9,16 @@ const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
 
     const [nombrePlatillo, setNombrePlatillo] = useState('');
     const [precio, setPrecio] = useState('');
-    const [categoriaPlatillo, setCategoriaPlatillo] = useState('Selecciona Categoria');
+    const [categoriaPlatillo, setCategoriaPlatillo] = useState(-1);
     const [descripcionPlatillo, setDescripcionPlatillo] = useState('');
     const [alerta, setAlerta] = useState({});
-
-
     
+
   const handleSubmitDish = async (event) => {
     event.preventDefault();
     console.log('Enviando Formulario')
 
-    if([nombrePlatillo,precio,categoriaPlatillo,descripcionPlatillo,image].includes('')){
+    if([nombrePlatillo,precio,categoriaPlatillo,descripcionPlatillo,image].includes('') || categoriaPlatillo.includes('Default')){
       setAlerta({msg: 'Existen campos vacíos, debes llenar todos los campos.', error: true});
         return;
       }
@@ -39,6 +39,13 @@ const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
     setCategoriaPlatillo('');
     setDescripcionPlatillo('');
     setImage(null)
+  }
+
+
+  const handleCategoriaSelect = (e) => {
+    const option = e.target.value;
+    setCategoriaPlatillo(categorias[option]);
+    console.log(categoriaPlatillo);
   }
 
   const { msg } = alerta;
@@ -69,15 +76,33 @@ const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
             <label htmlFor="categoria">Categoría</label>
 
               <Form.Select className="w-75" id="categoria"
-              value={categoriaPlatillo}
+              // value={categoriaPlatillo}
               onChange={e => setCategoriaPlatillo(e.target.value)}
               >
+                <option value={'Selecciona una Categoria'}></option>
               {categorias.map((categoria, index) => {
                 return (
-                  <option value={index}>{categoria}</option>
+                  <option  value={categorias[index]}>{categoria}</option>
                 )
               })}
               </Form.Select>
+
+              {/* <select name="categorias" id="selectCategorias" onClick={handleCategoriaSelect}>
+                <option value={-1}>Seleccione una Opcion</option>
+              {categorias.map((categoria, index) => {
+                return(
+                  <option key={'categoria' + index} value={index}>{categoria}</option>
+              )})}
+              </select> */}
+              
+
+
+              {/* <Select
+                options={
+                    
+                }
+              /> */}
+
           </div>
 
           <div className="createDish__group">

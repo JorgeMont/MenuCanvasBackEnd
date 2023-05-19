@@ -4,7 +4,7 @@ import Alerta from "../../Alerta/Alerta";
 import { FaPlus } from "react-icons/fa";
 
 
-const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
+const FormMenu = ({categorias, setCategorias}) => {
 
     const [nombreMenu, setNombreMenu] = useState('');
     const [categoria, setCategoria] = useState('');
@@ -14,16 +14,14 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
 
     const handleCategoria = (event) => {
         event.preventDefault();
-          console.log('Creando Categoria...');
-          if(categoria.includes('')){
-            setAlerta({msg: 'Debes añadir una categoría', error: true})
-          }else{
-    
+        setAlerta(false);
+        if(categoria === ''){
+          setAlerta({msg: 'Debes añadir una categoría', error: true})
+        }else{
             setCategorias([...categorias, categoria]);
             setAlerta(false);
           }
       }
-    
     
       const handleSubmitMenu = async (event) => {
         event.preventDefault();
@@ -71,7 +69,7 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
             value={categoria}
             onChange={e => setCategoria(e.target.value)}
             />
-            <button className="btn__categoria" onClick={handleCategoria}> <FaPlus/> Añadir Categoría</button>
+            <button className="btn__categoria" onClick={handleCategoria} role="button" type="button"> <FaPlus/> Añadir Categoría</button>
 
             <div className="createMenu__categoriaList">
               {categorias.map((categoria, index) => {
