@@ -6,42 +6,50 @@ import { FaPlus } from "react-icons/fa";
 
 const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
 
-    const [nombreMenu, setNombreMenu] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [nombreMenu, setNombreMenu] = useState([]);
+    const [categoria, setCategoria] = useState([]);
     // const [listaCategorias, setListaCategorias] =useState([]);
     const [alerta, setAlerta] = useState({});
 
 
     const handleCategoria = (event) => {
         event.preventDefault();
-          console.log('Creando Categoria...');
-          if(categoria.includes('')){
+        console.log('Creando Categoria...');
+          //if(categoria.includes('')){
+          if(categoria.length < 1) {  
             setAlerta({msg: 'Debes añadir una categoría', error: true})
+            return;
           }else{
     
             setCategorias([...categorias, categoria]);
             setAlerta(false);
           }
-      }
-    
+          console.log ([...categorias, categoria])
+        }
     
       const handleSubmitMenu = async (event) => {
         event.preventDefault();
-        if([nombreMenu,categoria].includes('')){
+        if(nombreMenu.length < 1)  {
+          //if([categoria].includes('')) {
+          //if([nombreMenu,categoria].includes('')){  
           setAlerta({msg: 'Existen campos vacíos, debes ingresar el nombre del menu y las categorias.', error: true});
           return;
         }
+ 
+        
 
         try {
           const getId = await axios.get('http://localhost:3030/api/restaurante/645fecb432eb99628c2579ee');
-          const {data} = await axios.post('http://localhost:3030/api/menu', {nombre : nombreMenu, categorias, restauranteId: getId.data._id} )
-
+          const {data} = await axios.post('http://localhost:3030/api/menu', {nombre : nombreMenu, categoria: categoria, restauranteId: getId.data._id} );
+          
+          console.log(data);
           setAlerta({msg: data.msg, error: false});
 
         } catch (error) {
-          console.log(error);
+          //console.log(error);
+          console.log(error.toJSON());
         }
-    
+      
 
       }
 
@@ -70,6 +78,7 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
             placeholder="Ingresa categoria"
             value={categoria}
             onChange={e => setCategoria(e.target.value)}
+            
             />
             <button className="btn__categoria" onClick={handleCategoria}> <FaPlus/> Añadir Categoría</button>
 

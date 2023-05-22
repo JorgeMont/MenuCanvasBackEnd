@@ -16,7 +16,7 @@ function Dashboard() {
       <Sidebar className="bg-light"/>
       <div className='categoriaPlatillos__container'>
       <div className='categorias__container'>
-        <a href="#"><Categoria/></a>
+        <a href="#"><Categoria/> </a>
         <a href="#"><Categoria/></a>
         <a href="#"><Categoria/></a>
         <a href="#"><Categoria/></a>

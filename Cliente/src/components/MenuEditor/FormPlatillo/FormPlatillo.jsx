@@ -8,7 +8,7 @@ const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
 
     const [nombrePlatillo, setNombrePlatillo] = useState('');
     const [precio, setPrecio] = useState('');
-    const [categoriaPlatillo, setCategoriaPlatillo] = useState('Selecciona Categoria');
+    const [categoriaPlatillo, setCategoriaPlatillo] = useState( [] );
     const [descripcionPlatillo, setDescripcionPlatillo] = useState('');
     const [alerta, setAlerta] = useState({});
 
@@ -27,7 +27,8 @@ const FormPlatillo = ({categorias, platillo, setPlatillo, image, setImage}) => {
       const getId = await axios.get('http://localhost:3030/api/menu/646019bd56e549c826808efd');
       const {data} = await axios.post('http://localhost:3030/api/platillo', {nombre : nombrePlatillo, precio, categoria: categoriaPlatillo, descripcion: descripcionPlatillo, foto: image, menuId: getId.data._id} )
 
-      console.log(data);
+      console.log({data});
+
     } catch (error) {
       console.log(error);
     }
