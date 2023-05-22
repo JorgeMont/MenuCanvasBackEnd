@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 // const { mongoose } = require('./conexion');
 const conexion = require('./conexion');
-
+/*
 const whiteList = ['http://localhost:3000'];
 const options = {
   origin: function (origin, callback){
@@ -14,9 +14,10 @@ const options = {
       callback(new Error("Error de Cors"));
     }
   }
-};
+};*/
 
-app.use(cors(options));
+//app.use(cors(options));
+app.use(cors());
 app.use(express.json());
 
 
