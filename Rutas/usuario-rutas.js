@@ -1,23 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const Usuario = require('../Models/Usuario');
-const generarId = require('../helpers/generarId.js');
-const generarJWT = require('../helpers/generarJWT.js');
+const Usuario = require('../Models/Usuario')
+const generarJWT = require('../helpers/generarJWT');
+const generarId = require('../helpers/generarId');
+const jwt = require('../Middleware/verificarAutorizacion.js');
 
 
 
 //Crear nuevo usuario
 router.post('/', async (req, res) => {
-   const { nombre, apellido, correo, password, edad, token} = req.body;
+   const { nombre, apellido, correo, password, edad, role, token} = req.body;
    const existsUser = await Usuario.findOne({correo});
    if(existsUser){
       const error = new Error('Ya existe un usuario registrado con esa cuenta de correo.');
       res.status(400).json({msg: error.message});
    }
    
-   const usuario = new Usuario({ nombre, apellido, correo, password, edad, token});
+   const usuario = new Usuario({ nombre, apellido, correo, password, role, edad, token});
    usuario.token = generarId();
    await usuario.save().then(data => {
+      res.status(200).send ({
+         msg: 'Usuario creado correctamente'
+      })
    }
    ).catch(err => {
       console.log({ message: err });
@@ -88,6 +92,9 @@ router.delete ('/:id', async (req, res) => {
 })
 
 
+
+// Autenticación
+
 router.post('/login', async (req, res) => {
    const { correo, password} = req.body;
    const usuario = await Usuario.findOne({correo});
@@ -108,6 +115,8 @@ router.post('/login', async (req, res) => {
          nombre: usuario.nombre,
          correo: usuario.correo,
          token: generarJWT(usuario._id),
+         role: usuario.role,
+         edad: usuario.edad
       })
    }else{
       const error = new Error('El password no es válido.');
@@ -133,8 +142,6 @@ router.get('/confirmar/:token', async (req , res) => {
    } catch (error) {
       console.log(error);
    }
-
-
 });
 
 
@@ -193,5 +200,17 @@ router.post('/olvide-password/:token', async (req, res) => {
    console.log(token);
    console.log(password);
 });
+
+
+
+
+
+
+router.get('/perfil', async(req, res) => {
+   res.status(200).send({
+      status: 'correct'
+   })
+});
+
 
 module.exports = router;

@@ -8,6 +8,7 @@ const schemaUsuario = new eschema({
     apellido: {type: 'String', required: true, trim: true},
     correo: {type: 'String', required: true, unique: true, trim: true},
     password: {type: 'String', required: true, trim: true},
+    role: {type: 'String', default: 'role_user'},
     edad: {type: 'Number', required: false, trim: true},
     token: {type: 'String'},
     confirmacion: {type: 'Boolean', default: false},
