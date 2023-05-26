@@ -3,7 +3,8 @@ const router = express.Router();
 const Usuario = require('../Models/Usuario')
 const generarJWT = require('../helpers/generarJWT');
 const generarId = require('../helpers/generarId');
-const jwt = require('../Middleware/verificarAutorizacion.js');
+const verificarAutorizacion = require('../Middleware/verificarAutorizacion');
+const perfil = require('../userController');
 
 
 
@@ -86,7 +87,6 @@ router.delete ('/:id', async (req, res) => {
          error: 'No se encontro ningún registro en la base de datos '
       })
    }
-
    res.sendStatus(204);
 
 })
@@ -206,11 +206,7 @@ router.post('/olvide-password/:token', async (req, res) => {
 
 
 
-router.get('/perfil', async(req, res) => {
-   res.status(200).send({
-      status: 'correct'
-   })
-});
+router.get('/profile', verificarAutorizacion, perfil);
 
 
 module.exports = router;

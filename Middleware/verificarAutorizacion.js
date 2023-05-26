@@ -1,9 +1,9 @@
 
-const verificarAutorizacion = (req, res) => {
+// const verificarAutorizacion = (req, res) => {
 
-    console.log('Desde verificar Autorización');
+//     console.log('Desde verificar Autorización');
 
-};
+// };
 
 
-module.exports = verificarAutorizacion;
+// module.exports = verificarAutorizacion;
