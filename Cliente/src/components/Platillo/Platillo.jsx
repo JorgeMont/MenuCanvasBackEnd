@@ -1,18 +1,18 @@
 import { FaImage } from "react-icons/fa";
 
-const Platillo = () => {
+const Platillo = ( {title, description, price, image } ) => {
 
     return(
         <div className="platillo__container">
             <div className="platillo__content">
                 <div className="platillo__content-img">
-                    <img src="https://picsum.photos/200" alt="imagen platillo" />
+                   <img src={image} alt="imagen platillo" />
                 </div>
 
                 <div className="platillo__content-description">
-                    <h4>Nombre de Platillo</h4>
-                    <p>Breve descripción del platillo</p>
-                    <p className="platillo__content-description--precio">$xx.xx</p>
+                    <h4> {title} </h4>
+                    <p>{ description}</p>
+                    <p className="platillo__content-description--precio">${price}</p>
                 </div>
             </div>
         </div>

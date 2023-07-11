@@ -1,12 +1,12 @@
 import { MdFastfood } from "react-icons/md";
 
 
-const Categoria = () => {
+const Categoria = ({label} ) => {
 
     return(
         <div className="categoria__container">
             <MdFastfood />
-            <p>Comida</p>
+            <p>{label}</p>
         </div>
     )
 }

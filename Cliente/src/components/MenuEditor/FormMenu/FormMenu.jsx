@@ -40,9 +40,10 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
 
         try {
           const getId = await axios.get('http://localhost:3030/api/restaurante/645fecb432eb99628c2579ee');
-          const {data} = await axios.post('http://localhost:3030/api/menu', {nombre : nombreMenu, categoria: categoria, restauranteId: getId.data._id} );
+          const {data} = await axios.post('http://localhost:3030/api/menu', {nombre : nombreMenu, categoria, restauranteId: getId.data._id} );
           
           console.log(data);
+          
           setAlerta({msg: data.msg, error: false});
 
         } catch (error) {
@@ -85,7 +86,7 @@ const FormMenu = ({categorias, setCategorias, menu, setMenu}) => {
             <div className="createMenu__categoriaList">
               {categorias.map((categoria, index) => {
                 return (
-                  <p key={index}>{categoria}</p>
+                  <p key={index}> {categoria} </p>
                 )
               })}
             </div>
